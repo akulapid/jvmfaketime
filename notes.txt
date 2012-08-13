@@ -1,0 +1,19 @@
+--- java6
+C_INCLUDE_PATH=/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers cc jvmfaketime.c -o libjvmfaketime.dylib -dynamiclib -lcurl
+sudo cp libjvmfaketime.dylib /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Libraries
+
+javac -cp javassist.jar:. ClassModifier.java
+java -cp .:javassist.jar -Djava.library.path=. ClassModifier
+
+javac -Xbootclasspath/p:. Test.java
+java -cp . -Xbootclasspath/p:. Test
+
+--- java7
+C_INCLUDE_PATH=/Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/include cc -I '/Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/include/darwin' jvmfaketime.c -o libjvmfaketime.dylib -dynamiclib -lcurl
+sudo cp libjvmfaketime.dylib /Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib
+
+javac -cp javassist.jar:. ClassModifier.java
+java -cp .:javassist.jar -Djava.library.path=. ClassModifier
+
+javac -Xbootclasspath/p:. Test.java
+java -cp . -Xbootclasspath/p:. Test
