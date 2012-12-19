@@ -1,8 +1,8 @@
-cc -I '$JAVA_HOME/include' -I '$JAVA_HOME/include/darwin' -o libjvmfaketime.dylib -dynamiclib jvmfaketime.c
+cc -I '$JAVA_HOME/include' -I '$JAVA_HOME/include/linux' -o libjvmfaketime.so -shared -m32 jvmfaketime.c
 echo "compiled libjvmfaketime.so..."
 
-sudo cp libjvmfaketime.dylib $JAVA_HOME/jre/lib
-echo "installed libjvmfaketime in $JAVA_HOME/jre/lib"
+sudo cp libjvmfaketime.so $JAVA_HOME/jre/lib/i386
+echo "installed libjvmfaketime in $JAVA_HOME/jre/lib/i386"
 
 javac -cp javassist.jar:. ClassModifier.java
 java -cp .:javassist.jar -Djava.library.path=. ClassModifier
