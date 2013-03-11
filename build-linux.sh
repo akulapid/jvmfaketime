@@ -1,4 +1,4 @@
-cc -I '$JAVA_HOME/include' -I '$JAVA_HOME/include/linux' -o libjvmfaketime.so -shared -m32 jvmfaketime.c
+cc -I $JAVA_HOME/include -I $JAVA_HOME/include/linux -o libjvmfaketime.so -shared  -fPIC jvmfaketime.c
 echo "compiled libjvmfaketime.so..."
 
 sudo cp libjvmfaketime.so $JAVA_HOME/jre/lib/i386
